@@ -1,0 +1,148 @@
+/*中间分类模块*/
+.grid{
+ height: 480px;/*父级这个grid给了高度,子级的块就可以不用清楚浮动了.清楚浮动的本质就是为了解决孩子浮动,父亲检测不到高度的问题*/
+}
+/*左边部分*/
+.grid_column1{
+ width: 190px;
+ height:100%;
+ background:#6e6568;
+ color:#fff;   /*这个是给/准备的,不是给链接字的*/
+ font-size:14px; /*这个是给/准备的,不是给链接字的*/
+}
+.grid_column1 a {
+  color:#fff;   /*这个是才是给链接字准备的*/
+  font-size:14px;  /*这个是才是给链接字准备的*/
+  margin:0 2px; /*给每个a标签撑开一个小距离*/
+}
+.grid_column1 a:hover {
+  color:#f10215;
+}
+.grid_column1 ul {
+   padding:20px 0 ;/*因为每个li还有行高的问题,所以不需要设置25px那么大,只需要20px即可,加上行高一半也差不多了*/
+}
+.grid_column1 ul li {
+   /* margin-left:12px; */
+   padding-left:12px;/*不用margin用padding是因为设置li的hover的时候背景色要包含整个li块,用margin是不能包含背景色的,而padding可以*/
+   height:27px;
+   line-height: 27px;
+}
+.grid_column1 ul li:hover {
+  background:silver
+}
+/*中间部分*/
+.grid_column2 {
+width: 790px;
+height:100%;
+margin-top:10px;
+}
+/*中间部分_左边区域*/
+.grid_column2_left{
+  width:590px;
+  height:100%;
+  float:left;
+  position:relative;
+
+}
+/*中间部分_右边区域*/
+.grid_column2_right{
+  float:right;
+  position:relative;
+}
+.grid_column2_right ul{
+  position:absolute;
+  left:-185px;
+}
+.grid_column2_right li{
+   margin-bottom:6px;
+}
+.grid_column2_right li:hover{
+  opacity: 0.8;
+  filter:alpha(opacity=80)
+}
+/*轮播图左右箭头部分*/
+.arrow_left,.arrow_right{
+  position:absolute;  /*给了绝对定位的内联盒子,不需要转换为块级盒子可以直接设置宽高*//*子绝对,父相对*/
+  width: 30px;
+  height: 60px;
+  background: #000;
+  opacity: 0.3;
+  filter:alpha(opacity=30);/*写background:#000和opacity=0.3等价于background:rgba(0,0,0,.3)*/
+  top:50%;/*在子级元素中写上top:50%,然后再写上transform:translateY(-50%)就可以使得子元素相对父元素垂直居中*/
+  transform: translateY(-50%);
+  line-height: 60px;
+  font-size:30px;
+  color:rgba(255,255,255,0.6);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold
+}
+.arrow_right{
+  right:0;/*相对于父级右边0px,左边因为一开始就是在左边0位置,所以可以不用写左边那个*/
+}
+/*轮播图控制条*/
+.control_circle {
+  width: 167px;
+  height: 20px;
+  background:rgba(25, 255, 255, 0.3);
+  position:absolute;/*记住!只有在子绝对,父相对的情况下,才可以使用left:50%和transform:transformX(-50%)使得子相对父水平居中,top也是类似的*/
+  left:50%;
+  transform:translateX(-50%);
+  bottom:20px;
+  border-radius:10px;/*border-radius:50%对应的形状是小圆点,但是可以试试这里设置成50%是什么效果,怪怪的*/
+  padding-left:8px;/*这里改了10px,那么width要减去10px,总长度才能相等*/
+}
+/*轮播图控制条中的小圆点*/
+.control_circle li{
+  width: 12px;
+  height: 12px;
+  background:#fff;
+  border-radius:50%;/*border-radius:50%对应的形状是小圆点,盒子不包含东西的情况下*/
+  float:left;
+  margin:4px;
+  cursor:pointer;
+}
+.control_circle .current{
+  background:#f10215;
+}
+/*右边部分*/
+.grid_column3 {
+  width: 190px;
+  height: 100%;
+  background: purple;
+}
+.grid_column3_login{
+height: 85px;
+border:1px solid #ccc;
+background:pink;
+padding:15px
+}
+/*
+笔记:要想超出部分显示省略号需要三句话一同执行:
+(1)强制不换行,显示在一行之内 white-space:nowrap
+(2)溢出部分进行隐藏  overflow:hidden
+(3)超出部分显示省略号  text-overflow:ellipsis
+*/
+.login_top{
+  width: 95px;
+  white-space: nowrap;/*强制不换行一行内显示*/
+  overflow:hidden;/*溢出部分隐藏,通常和white-space一起使用防止强制不换行后内容宽度增大*/
+  text-overflow: ellipsis; /**超出的部分显示省略号...//*不写这句话会多出现半个京东的京字,可以打开试试看*/
+  padding-left:60px;/*利用padding-left将文字挤到右边去,挤出来的60px用作图标使用*/
+  height: 60px; /*这里设置60px也是给图标准备的,设置完后上半部分就有了60px足够的高放图标*/
+  line-height: 20px /*给字体设置一个行高*/
+}
+.login_top a{
+  color:#666;
+}
+.login_top a:hover{
+  color:#f10215;
+}
+.grid_column3_news{
+ height:155px;
+ background:darkcyan;
+}
+.grid_column3_expand{
+height:208px;
+background:darkgoldenrod;
+}
